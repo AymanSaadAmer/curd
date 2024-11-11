@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+<body class="bg-warning-subtle">
+    <header class=" d-flex justify-content-center align-items-center">
+        <h3>
+            Example of cruds
+        </h3>
+    </header>
+        <section class="container-fluid ">
+        <div class="row justify-content-end mx-1">
+            <div class="col-4 ">
+                <input type="text" oninput="Search_By_Nmae(this.value)" class="form-control mb-3 mt-3" id="Search" placeholder="Search by Name ......">
+            </div>
+            
+        </div>
+        </section>
+    <section class="mx-auto  w-50" >
+        <label for="name">Prodect Name</label>
+        <input type="text" class="form-control mb-3 " id="name">
+
+        <label for="price">Prodect Price</label>
+        <input type="number" class="form-control mb-3 " id="price">
+
+        <label for="catagorey">Prodect catagorey</label>
+        <input type="text" class="form-control mb-3 " id="catagorey">
+
+        <label for="img">Prodect img</label>
+        <input type="file" class="form-control mb-3 " id="img">
+
+        <label for="desc">Product Description</label>
+        <textarea name="" class="form-control mb-3 " id="desc"></textarea>
+
+        <button class="w-100 btn btn-outline-info mb-3 d-block" id="Add_Btn"  onclick="getvalues() ">Add prodect</button>
+        <button class="w-100 btn btn-outline-warning mb-3 d-none"  id="Updata_Btn" onclick="Updata_Prodect()">Updata Prodect</button>
+
+        <div class="w-75 mx-auto mt-5">
+            <div class="container-fluid">
+            
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>img</th>
+                            <th>name</th>
+                            <th>price</th>
+                            <th>category</th>
+                            <th>desc</th>
+                            <th>Updata</th>
+                            <th>Delete</th>
+                        </tr>   
+                    </thead>
+                    <tbody id="TableData">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    
+    </section>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
