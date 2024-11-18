@@ -17,23 +17,85 @@ display_value();
 allprodect=[];
 }
 
-function getvalues() {
+function Vaildation_Name(){
+var regex=/^[A-Z]{1}[a-z]{3,15}[0-9]*/
+if(regex.test(Prodect_name.value)==true){
+    document.getElementById("alert_prodectName").classList.replace("d-block","d-none")
+    return true
     
-    var prodect={
-        NAME:Prodect_name.value,
-        PRICE:prodect_price.value,
-        CATAGOROY:prodect_catagorey.value,
-        IMAGE:Prodect_img.files[0]?.name,
-        DESCRIPTION:Prodect_description.value
+}
+document.getElementById("alert_prodectName").classList.replace("d-none","d-block")
+return false
+}
+function Vaildation_price(){
+    var regex=/^[1-9][0-9]+$/
+    if (regex.test(prodect_price.value)==true) {
+
+        document.getElementById("alert_prodectPrice").classList.replace("d-block","d-none")
+    return true
         
     }
-    allprodect.push(prodect);
-    // console.log(allprodect);
-    
-    localStorage.setItem("allprodect",JSON.stringify(allprodect))
-    clearvalues();
+    else{
+        document.getElementById("alert_prodectPrice").classList.replace("d-none","d-block")
 
-    display_value()
+        return false
+    }
+}
+function Vaildation_catagorey(){
+    var regex=/^[A-Z]{1}[a-z]{3,15}[0-9]*/
+
+    if(regex.test(prodect_catagorey.value)==true){
+        document.getElementById("alert_prodectcatagorey").classList.replace("d-block","d-none")
+        return true;
+    }
+    else{
+        document.getElementById("alert_prodectcatagorey").classList.replace("d-none","d-block")
+        return false;
+    }
+}
+function Vaildation_desc(){
+    var regex=/^[A-Z]{1}/
+    if(regex.test(Prodect_description.value)==true)
+    {
+        document.getElementById("alert_prodectDescription").classList.replace("d-block","d-none");
+        return true;
+    }
+    else{
+        document.getElementById("alert_prodectDescription").classList.replace("d-none","d-block")
+        return false
+    }
+
+}
+
+function getvalues() {
+    
+    if(Vaildation_Name()==true && Vaildation_price()==true &&Vaildation_catagorey()==true&&Vaildation_desc()==true){
+
+        
+        var prodect={
+            NAME:Prodect_name.value,
+            PRICE:prodect_price.value,
+            CATAGOROY:prodect_catagorey.value,
+            IMAGE:Prodect_img.files[0]?.name,
+            DESCRIPTION:Prodect_description.value
+            
+        }
+
+        // علشان لو الصوره لم يتم وضعها بيضع صوره ثابته 
+        if(prodect.IMAGE==undefined){
+            prodect.IMAGE= "1 (1).jpg"
+        }
+
+        allprodect.push(prodect);
+        // console.log(allprodect);
+        
+        localStorage.setItem("allprodect",JSON.stringify(allprodect))
+        clearvalues();
+    
+        display_value()
+    }
+
+    
     
 };
 function clearvalues(){
@@ -148,3 +210,11 @@ clearvalues();
 
 localStorage.setItem("allprodect",JSON.stringify(allprodect))
 }
+// var regex=/^[A-Z]{1}[a-z]{3,10}$/g ;
+
+// if(regex.test("Sumsung")==true){
+//     console.log("Done")
+// }else{
+//     console.log("NO Done");
+    
+// }
